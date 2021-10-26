@@ -1,28 +1,21 @@
 import { ActionType } from '../ActionTypes';
 
-const initialState = {
-  todos: [],
-};
+const initialState = [];
 
 const reducer = (state = initialState, action) => {
   let newState;
   switch (action.type) {
     case ActionType.GET_TODO:
       newState = { ...state, todos: action.payload };
-      return newState;
+      return action.payload;
 
     case ActionType.ADD_TOO:
-      newState = JSON.parse(JSON.stringify(state));
-      newState.todos.push({
-        id: action.payload.id,
-        content: action.payload.content,
-        is_done: action.payload.is_done,
-      });
-      return newState;
+      const { id, content, is_done } = action.payload;
+      return [...state, { id, content, is_done }];
 
     case ActionType.UPDATE_TODO:
       newState = JSON.parse(JSON.stringify(state));
-      newState.todos.forEach((todo) => {
+      newState.forEach((todo) => {
         if (todo.id === action.payload.id) {
           todo.content = action.payload.content;
           todo.is_done = action.payload.is_done;
@@ -30,11 +23,7 @@ const reducer = (state = initialState, action) => {
       });
       return newState;
     case ActionType.DELETE_TODO:
-      newState = JSON.parse(JSON.stringify(state));
-      let filtered = newState.todos.filter(
-        (todo) => todo.id !== action.payload
-      );
-      newState.todos = filtered;
+      newState = state.filter((todo) => todo.id !== action.payload);
       return newState;
     default:
       return state;

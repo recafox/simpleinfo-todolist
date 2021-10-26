@@ -6,4 +6,8 @@ export const StyledSectionLabel = styled.p`
   font-size: 16px;
   line-height: 22px;
   margin-bottom: 24px;
+
+  @media(max-width: ${({ theme }) => theme.breakPoints.mobile}) {
+    margin-bottom: 16px;
+  }
 `;

@@ -1,6 +1,6 @@
 {
   "name": "simpleinfo_todolist",
-  "homepage": " https://recafox.github.io/simpleinfo-todolist/",
+
   "version": "0.1.0",
   "private": true,
   "dependencies": {

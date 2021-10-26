@@ -5,18 +5,17 @@ import { useSelector } from "react-redux";
 
 
 const FinishedList = () => {
-  const todos = useSelector(state => state.todos.todos);
-  const items = todos.length ? todos.filter(todo => todo.is_done === true) : [];
+  const todos = useSelector(state => state.todos.filter(todo => todo.is_done === true));
   const renderItems = () => {
-    if (items.length) {
-      return items.map(todo => <TodoItem key={todo.id} id={todo.id} content={todo.content} isDone={true}></TodoItem>)
+    if (todos.length) {
+      return todos.map(todo => <TodoItem key={todo.id} item={todo}></TodoItem>)
     }
     return "";
 
   };
   return (
     <div>
-      <SectionLabel text="已完成待辦" number={items.length} />
+      <SectionLabel text="已完成待辦" number={todos.length} />
       <StyledListWrapper>
         {renderItems()}
       </StyledListWrapper>

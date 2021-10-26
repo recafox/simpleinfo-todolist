@@ -3,4 +3,5 @@ export const ActionType = {
   ADD_TOO: 'add_todo',
   DELETE_TODO: 'delete_todo',
   UPDATE_TODO: 'update_todo',
+  SET_LOADING: 'set_loading',
 };

@@ -7,6 +7,7 @@ import Logo from './Logo';
 import UnfinishedList from './UnfinishedList';
 import FinishedList from "./FinishedList";
 import AddTodo from './AddTodo';
+import LoadingSpinner from './Loading';
 
 const theme = {
   colors: {
@@ -39,6 +40,7 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
+      <LoadingSpinner />
       <StyledContainer>
         <Logo />
         <UnfinishedList />

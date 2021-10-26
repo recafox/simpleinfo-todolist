@@ -2,32 +2,50 @@ import { StyledItem } from "./Styled/Item.styled";
 import { useState, useRef, useEffect } from 'react';
 import { useActions } from '../Hooks/useActions';
 
-const TodoItem = ({ id, isDone, content}) => {
+const TodoItem = ({ item }) => {
+  const { id, is_done, content } = item;
   const [isEditing, setIsEditing] = useState(false);
   const [tempContent, setTempContent] = useState(content);
   const { update_todo, delete_todo } = useActions();
   const itemRef = useRef();
   const textRef = useRef();
+  const markRef = useRef();
 
 
   useEffect(() => {
     const stopEditing = (e) => {
       if (!itemRef.current.contains(e.target)) {
         setIsEditing(false);
+        let currentContent = textRef.current.value;
+        if (currentContent !== content) {
+          update_todo({
+            id,
+            content: currentContent,
+            is_done: is_done
+          });
+        }
       }
     }
-    document.body.addEventListener("click", stopEditing);
-
+    if (isEditing) {
+      document.body.addEventListener("click", stopEditing);
+    }
     return () => {
       document.body.removeEventListener("click", stopEditing);
     }
-  }, [])
+  }, [isEditing]);
 
-  const toggleEditing = (e) => {
-    if (!isEditing) {
-      setIsEditing(true);
-      textRef.current.focus();
+
+  const turnOnEditing = (e) => {
+    if (markRef.current.contains(e.target)) {
+      return;
     }
+    setIsEditing(true);
+    // a workaround
+    window.setTimeout(() => {
+      textRef.current.focus();
+      // start at the end if the input
+      textRef.current.setSelectionRange(tempContent.length, tempContent.length);
+    }, 0)
   }
 
   const leaveEditing = (e) => {
@@ -36,7 +54,7 @@ const TodoItem = ({ id, isDone, content}) => {
         update_todo({
           id,
           content: tempContent,
-          is_done: isDone
+          is_done: is_done
         });
       }
       setIsEditing(false);
@@ -47,7 +65,7 @@ const TodoItem = ({ id, isDone, content}) => {
     update_todo({
       id,
       content: tempContent,
-      is_done: !isDone
+      is_done: !is_done
     })
   };
 
@@ -56,11 +74,24 @@ const TodoItem = ({ id, isDone, content}) => {
   }
 
   return (
-    <StyledItem ref={itemRef} className={`todo-item ${isDone ? "is--done" : ""} ${isEditing ? 'is--editing' : ""}`}>
-      <div className="content">
-        <button className="mark" onClick={e => toggleFinished()}></button>
-        <p className="text" onClick={e => toggleEditing(e)}>{tempContent}</p>
-        <textarea ref={textRef} onKeyPress={e => {leaveEditing(e)}} value={tempContent} onChange={e => setTempContent(e.target.value)}/>
+    <StyledItem ref={itemRef} className={`todo-item ${is_done ? "is--done" : ""} ${isEditing ? 'is--editing' : ""}`}>
+      <div className="content" onClick={e => turnOnEditing(e)}>
+        <button
+          ref={markRef}
+          className="mark"
+          onClick={e => toggleFinished()}>
+        </button>
+        <p
+          className="text"
+        >
+          {tempContent}
+        </p>
+        <textarea
+          ref={textRef}
+          onKeyPress={e => {leaveEditing(e)}}
+          value={tempContent}
+          onChange={e => setTempContent(e.target.value)}
+        />
       </div>
       <div className="base">
         <button className="deleteBtn" onClick={e => deleteTodo()}>

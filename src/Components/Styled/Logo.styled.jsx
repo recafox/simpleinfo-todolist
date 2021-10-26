@@ -6,4 +6,10 @@ export const StyledLogo = styled.h1`
   line-height: 87px;
   font-weight: bold;
   margin-bottom: 40px;
+
+  @media(max-width: ${({ theme }) => theme.breakPoints.mobile}) {
+    font-size: 48px;
+    line-height: 64px;
+    margin-bottom: 24px;
+  }
 `;

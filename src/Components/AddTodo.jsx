@@ -9,17 +9,22 @@ const AddTodo = () => {
   const [content, setContent] = useState("");
   const { add_todo } = useActions();
 
-  const onSubmit = () => {
-    add_todo(content);
+  const reset = () => {
     setContent("");
     setIsAdding(false);
   }
+
+  const onSubmit = () => {
+    add_todo(content);
+    reset();
+  };
+
 
   const renderBtnGroup = () => {
     if (isAdding) {
       return (
         <div className="btn-group">
-        <button className="cancel" onClick={e => setIsAdding(false)}>
+        <button className="cancel" onClick={reset}>
           <i className="fas fa-times"></i>
         </button>
         <button className="submit" onClick={onSubmit}>

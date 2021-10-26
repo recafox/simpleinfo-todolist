@@ -11,10 +11,19 @@ const axiosConfig = {
 
 export const get_todos = () => {
   return async (dispatch) => {
+    dispatch({
+      type: ActionType.SET_LOADING,
+      payload: true,
+    });
+
     const result = await axios.get(`${baseURL}/todos`, axiosConfig);
     dispatch({
       type: ActionType.GET_TODO,
       payload: result.data,
+    });
+    dispatch({
+      type: ActionType.SET_LOADING,
+      payload: false,
     });
   };
 };
@@ -25,6 +34,11 @@ export const add_todo = (content) => {
     is_done: false,
   };
   return async (dispatch) => {
+    dispatch({
+      type: ActionType.SET_LOADING,
+      payload: true,
+    });
+
     const result = await axios.post(`${baseURL}/todos`, req, axiosConfig);
     dispatch({
       type: ActionType.ADD_TOO,
@@ -34,11 +48,20 @@ export const add_todo = (content) => {
         is_done: false,
       },
     });
+
+    dispatch({
+      type: ActionType.SET_LOADING,
+      payload: false,
+    });
   };
 };
 
 export const update_todo = (item) => {
   return async (dispatch) => {
+    dispatch({
+      type: ActionType.SET_LOADING,
+      payload: true,
+    });
     const result = await axios.post(
       `${baseURL}/todos/${item.id}`,
       item,
@@ -52,15 +75,34 @@ export const update_todo = (item) => {
         is_done: result.data.is_done,
       },
     });
+    dispatch({
+      type: ActionType.SET_LOADING,
+      payload: false,
+    });
   };
 };
 
 export const delete_todo = (id) => {
   return async (dispatch) => {
+    dispatch({
+      type: ActionType.SET_LOADING,
+      payload: true,
+    });
     await axios.delete(`${baseURL}/todos/${id}`, axiosConfig);
     dispatch({
       type: ActionType.DELETE_TODO,
       payload: id,
     });
+    dispatch({
+      type: ActionType.SET_LOADING,
+      payload: false,
+    });
+  };
+};
+
+export const set_loading = (loading) => {
+  return {
+    type: ActionType.SET_LOADING,
+    payload: loading,
   };
 };

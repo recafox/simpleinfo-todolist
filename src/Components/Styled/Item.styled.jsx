@@ -9,6 +9,9 @@ export const StyledItem = styled.li`
   border-radius: ${({ theme }) => theme.itemRadius};
   overflow: hidden;
   box-shadow: 0px 4px 12px #00000026;
+  @media(max-width: ${({ theme }) => theme.breakPoints.mobile}) {
+    min-height: 70px;
+  }
 
 
   .content,
@@ -19,6 +22,10 @@ export const StyledItem = styled.li`
     min-height: 100%;
     padding: 24px 40px 24px 24px;
     border-radius: ${({ theme }) => theme.itemRadius};
+
+    @media(max-width: ${({ theme }) => theme.breakPoints.mobile}) {
+      padding: 24px 24px 24px 16px;
+    }
   }
 
   .content {
@@ -32,6 +39,7 @@ export const StyledItem = styled.li`
     p {
       width: 95%;
       word-break: break-all;
+      line-height: 22px;
     }
   }
 
@@ -51,6 +59,8 @@ export const StyledItem = styled.li`
   }
 
   &.is--done {
+    box-shadow: none;
+
     .mark {
       opacity: 0.33;
       &:after {
@@ -74,6 +84,10 @@ export const StyledItem = styled.li`
   &.is--editing {
     .content {
       width: calc(100% - 88px);
+
+      @media(max-width: ${({ theme }) => theme.breakPoints.mobile}) {
+        width: calc(100% - 64px);
+      }
     }
     .text {
       display: none;
@@ -92,6 +106,10 @@ export const StyledItem = styled.li`
     background: transparent;
     margin-right: 24px;
     position: relative;
+
+    @media(max-width: ${({ theme }) => theme.breakPoints.mobile}) {
+      margin-right: 16px;
+    }
 
     &:hover {
       &:after {

@@ -3,15 +3,15 @@ import styled from "styled-components";
 export const StyledInputItem = styled.div`
   background: #fff;
   width: 100%;
-  min-height: 88px;
+  height: 88px;
   display: flex;
   align-items: center;
   border-radius: ${({ theme })=> theme.itemRadius};
   padding: 24px;
   margin-bottom: 40px;
-
+  box-shadow: 0px 4px 12px #00000026;
   @media(max-width: ${({ theme }) => theme.breakPoints.tablet}) {
-      min-height: 72px;
+      height: 72px;
   }
 
   .mark {
@@ -58,6 +58,12 @@ export const StyledInputItem = styled.div`
     background: transparent;
     font-size: 20px;
     line-height: 27px;
+    height: 28px;
+
+
+    @media(max-width: ${({ theme }) => theme.breakPoints.mobile}) {
+      height: 22px;
+    }
 
     &:focus {
       outline: none;
