@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.js": "/simpleinfo-todolist/static/js/main.738cbae0.chunk.js",
-    "main.js.map": "/simpleinfo-todolist/static/js/main.738cbae0.chunk.js.map",
+    "main.js": "/simpleinfo-todolist/static/js/main.00dd1fa6.chunk.js",
+    "main.js.map": "/simpleinfo-todolist/static/js/main.00dd1fa6.chunk.js.map",
     "runtime-main.js": "/simpleinfo-todolist/static/js/runtime-main.468eef79.js",
     "runtime-main.js.map": "/simpleinfo-todolist/static/js/runtime-main.468eef79.js.map",
-    "static/js/2.91336dca.chunk.js": "/simpleinfo-todolist/static/js/2.91336dca.chunk.js",
-    "static/js/2.91336dca.chunk.js.map": "/simpleinfo-todolist/static/js/2.91336dca.chunk.js.map",
+    "static/js/2.7f8a494d.chunk.js": "/simpleinfo-todolist/static/js/2.7f8a494d.chunk.js",
+    "static/js/2.7f8a494d.chunk.js.map": "/simpleinfo-todolist/static/js/2.7f8a494d.chunk.js.map",
     "index.html": "/simpleinfo-todolist/index.html",
-    "static/js/2.91336dca.chunk.js.LICENSE.txt": "/simpleinfo-todolist/static/js/2.91336dca.chunk.js.LICENSE.txt"
+    "static/js/2.7f8a494d.chunk.js.LICENSE.txt": "/simpleinfo-todolist/static/js/2.7f8a494d.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.468eef79.js",
-    "static/js/2.91336dca.chunk.js",
-    "static/js/main.738cbae0.chunk.js"
+    "static/js/2.7f8a494d.chunk.js",
+    "static/js/main.00dd1fa6.chunk.js"
   ]
 }
