@@ -8,13 +8,11 @@ export const StyledContainer = styled.div`
 
   @media(max-width: ${({ theme }) => theme.breakPoints.tablet}) {
     width: 100vw;
-    padding: 40px 40px;
-    padding-bottom: 200px;
+    padding: 40px 40px 200px 40px;
   }
 
   @media(max-width: ${({ theme }) => theme.breakPoints.tablet}) {
-    padding: 40px 24px;
-    padding-bottom: 200px;
+    padding: 40px 24px 200px 24px;
   }
   
 `;
