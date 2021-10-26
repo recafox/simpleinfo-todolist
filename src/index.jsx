@@ -10,5 +10,3 @@ ReactDOM.render(
   </Provider>,
   document.querySelector("#root")
 );
-
-// "homepage": " https://recafox.github.io/simpleinfo-todolist/",
