@@ -59,6 +59,7 @@ export const GlobalStyles = createGlobalStyle`
     background-color: ${({ theme }) => theme.colors.bg};
     margin: 0;
     font-size: 20px;
+    overflow-x: hidden;
   }
 
   button {
