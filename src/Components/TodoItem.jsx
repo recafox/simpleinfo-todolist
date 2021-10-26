@@ -14,13 +14,6 @@ const TodoItem = ({ id, isDone, content}) => {
     const stopEditing = (e) => {
       if (!itemRef.current.contains(e.target)) {
         setIsEditing(false);
-        if (tempContent !== content) {
-          update_todo({
-            id,
-            content: tempContent,
-            is_done: isDone
-          });
-        }
       }
     }
     document.body.addEventListener("click", stopEditing);
