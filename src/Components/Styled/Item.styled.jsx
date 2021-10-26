@@ -8,6 +8,8 @@ export const StyledItem = styled.li`
   position: relative;
   border-radius: ${({ theme }) => theme.itemRadius};
   overflow: hidden;
+  box-shadow: 0px 4px 12px #00000026;
+
 
   .content,
   .base {

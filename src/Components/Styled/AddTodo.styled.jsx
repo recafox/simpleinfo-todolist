@@ -6,6 +6,11 @@ export const StyledAddTodo = styled.div`
   right: 0;
   width: 100%;
 
+  @media(max-width: ${({ theme }) => theme.breakPoints.tablet}) {
+    width: calc(100% - 48px);
+    right: 24px;
+  }
+
   .btn-group {
     display: flex;
     align-items: center;
@@ -37,6 +42,13 @@ export const StyledAddTodo = styled.div`
     color: #fff;
     background: #80E894;
     font-size: 40px;
+    box-shadow: 0px 4px 12px #0000004D;
+
+    @media(max-width: ${({ theme }) => theme.breakPoints.mobile}) {
+      height: 64px;
+      width: 64px;
+      font-size: 36px;
+    }
   }
 `;
 
@@ -54,4 +66,10 @@ export const StyledAddBtn = styled.button`
   border-radius: 50%;
   position: absolute;
   right: 0;
+  box-shadow: 0px 4px 12px #0000004D;
+
+  @media(max-width: ${({ theme }) => theme.breakPoints.mobile}) {
+    height: 64px;
+    width: 64px;
+  }
 `;

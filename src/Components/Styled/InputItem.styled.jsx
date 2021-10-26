@@ -10,7 +10,12 @@ export const StyledInputItem = styled.div`
   padding: 24px;
   margin-bottom: 40px;
 
+  @media(max-width: ${({ theme }) => theme.breakPoints.tablet}) {
+      min-height: 72px;
+  }
+
   .mark {
+    flex-shrink: 0;
     height: 40px;
     width: 40px;
     border-radius: 50%;
@@ -18,6 +23,10 @@ export const StyledInputItem = styled.div`
     background: transparent;
     margin-right: 24px;
     position: relative;
+
+    @media(max-width: ${({ theme }) => theme.breakPoints.tablet}) {
+      margin-right: 16px;
+    }
 
     &:hover {
       &:after {
