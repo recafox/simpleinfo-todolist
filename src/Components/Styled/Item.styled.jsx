@@ -51,8 +51,11 @@ export const StyledItem = styled.li`
   }
 
   &.is--done {
-    .mark:after {
+    .mark {
       opacity: 0.33;
+      &:after {
+        opacity: 1;
+      }
     }
 
     .content {
