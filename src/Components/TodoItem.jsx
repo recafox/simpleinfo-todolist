@@ -43,11 +43,11 @@ const TodoItem = ({ id, isDone, content}) => {
     }
   }
 
-  const markFinished = () => {
+  const toggleFinished = () => {
     update_todo({
       id,
       content: tempContent,
-      is_done: true
+      is_done: !isDone
     })
   };
 
@@ -58,7 +58,7 @@ const TodoItem = ({ id, isDone, content}) => {
   return (
     <StyledItem ref={itemRef} className={`todo-item ${isDone ? "is--done" : ""} ${isEditing ? 'is--editing' : ""}`}>
       <div className="content">
-        <button className="mark" onClick={e => markFinished()}></button>
+        <button className="mark" onClick={e => toggleFinished()}></button>
         <p className="text" onClick={e => toggleEditing(e)}>{tempContent}</p>
         <textarea ref={textRef} onKeyPress={e => {leaveEditing(e)}} value={tempContent} onChange={e => setTempContent(e.target.value)}/>
       </div>
