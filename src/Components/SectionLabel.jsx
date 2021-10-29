@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
 import { StyledSectionLabel } from './Styled/SectionLabel.styled';
+import { memo } from 'react';
+
 const SectionLabel = ({ text, number}) => {
   return (
     <>
@@ -13,4 +15,4 @@ SectionLabel.propTypes = {
   number: PropTypes.number.isRequired
 }
 
-export default SectionLabel;
+export default memo(SectionLabel);

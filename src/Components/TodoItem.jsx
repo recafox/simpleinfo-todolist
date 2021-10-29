@@ -1,9 +1,8 @@
 import { StyledItem } from "./Styled/Item.styled";
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, memo, useMemo } from 'react';
 import { useActions } from '../Hooks/useActions';
-
 const TodoItem = ({ item }) => {
-  const { id, is_done, content } = item;
+  const { id, is_done, content } = useMemo(() => item, [item]);
   const [isEditing, setIsEditing] = useState(false);
   const [tempContent, setTempContent] = useState(content);
   const { update_todo, delete_todo } = useActions();
@@ -32,7 +31,7 @@ const TodoItem = ({ item }) => {
     return () => {
       document.body.removeEventListener("click", stopEditing);
     }
-  }, [isEditing]);
+  }, [content, id, is_done, update_todo, isEditing]);
 
 
   const turnOnEditing = (e) => {
@@ -102,4 +101,13 @@ const TodoItem = ({ item }) => {
   )
 }
 
-export default TodoItem;
+export default memo(TodoItem, (prevProps, nextProps) => {
+  let { item: prevItem } = prevProps;
+  let { item: nextItem } = nextProps;
+
+  if (prevItem.content !== nextItem.content || prevItem.is_done !== nextItem.is_done) {
+    return false;
+  };
+
+  return true;
+});

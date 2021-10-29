@@ -11,20 +11,15 @@ const axiosConfig = {
 
 export const get_todos = () => {
   return async (dispatch) => {
-    dispatch({
-      type: ActionType.SET_LOADING,
-      payload: true,
-    });
+    dispatch(set_loading(true));
 
     const result = await axios.get(`${baseURL}/todos`, axiosConfig);
     dispatch({
       type: ActionType.GET_TODO,
       payload: result.data,
     });
-    dispatch({
-      type: ActionType.SET_LOADING,
-      payload: false,
-    });
+
+    dispatch(set_loading(false));
   };
 };
 
@@ -34,10 +29,7 @@ export const add_todo = (content) => {
     is_done: false,
   };
   return async (dispatch) => {
-    dispatch({
-      type: ActionType.SET_LOADING,
-      payload: true,
-    });
+    dispatch(set_loading(true));
 
     const result = await axios.post(`${baseURL}/todos`, req, axiosConfig);
     dispatch({
@@ -49,19 +41,13 @@ export const add_todo = (content) => {
       },
     });
 
-    dispatch({
-      type: ActionType.SET_LOADING,
-      payload: false,
-    });
+    dispatch(set_loading(false));
   };
 };
 
 export const update_todo = (item) => {
   return async (dispatch) => {
-    dispatch({
-      type: ActionType.SET_LOADING,
-      payload: true,
-    });
+    dispatch(set_loading(true));
     const result = await axios.post(
       `${baseURL}/todos/${item.id}`,
       item,
@@ -75,28 +61,19 @@ export const update_todo = (item) => {
         is_done: result.data.is_done,
       },
     });
-    dispatch({
-      type: ActionType.SET_LOADING,
-      payload: false,
-    });
+    dispatch(set_loading(false));
   };
 };
 
 export const delete_todo = (id) => {
   return async (dispatch) => {
-    dispatch({
-      type: ActionType.SET_LOADING,
-      payload: true,
-    });
+    dispatch(set_loading(true));
     await axios.delete(`${baseURL}/todos/${id}`, axiosConfig);
     dispatch({
       type: ActionType.DELETE_TODO,
       payload: id,
     });
-    dispatch({
-      type: ActionType.SET_LOADING,
-      payload: false,
-    });
+    dispatch(set_loading(false));
   };
 };
 
